@@ -12,7 +12,7 @@ package com.mycompany.npieunitesmaven;
  */
 public class Test {
     public static void main(String[] args){
-		Main main = new Main("src/main/java/com/mycompany/npieunitesmaven/config.xml");
+		/*Main main = new Main("src/main/java/com/mycompany/npieunitesmaven/config.xml");
 		main.convertJoli((float) 1.3, "distance", "metre", "yard");
 		main.ajouterUnite("distance", "newUnit", "1.07324324;12");
 		main.convertJoli((float) 1, "temperature", "fahreneit", "celsius");
@@ -27,6 +27,6 @@ public class Test {
 		main.convertJoli((float) 1, "temperature", "celsius", "kelvin");
 		main.convertJoli((float) 1, "temperature", "kelvin", "fahreneit");
 		main.convertJoli((float) 1, "temperature", "fahreneit", "kelvin");
-		main.supprimerUnite("distance", "newUnit");
+		main.supprimerUnite("distance", "newUnit");*/
 	}
 }
