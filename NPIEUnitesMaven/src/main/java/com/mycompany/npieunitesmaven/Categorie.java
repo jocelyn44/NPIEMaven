@@ -12,7 +12,7 @@ import java.util.LinkedList;
  */
 public class Categorie {
     private String nom;
-	public LinkedList<Unite> list = new LinkedList<Unite>();
+	public LinkedList<Unite> list = new LinkedList<>();
 	
 	public Categorie(String pNom){
 		nom = pNom;

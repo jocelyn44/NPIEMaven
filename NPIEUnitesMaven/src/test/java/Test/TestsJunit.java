@@ -12,18 +12,17 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author jocelynFac
  */
 public class TestsJunit {
-    
-    public TestsJunit() {
-        Main main = new Main("src/main/java/com/mycompany/npieunitesmaven/config.xml");
+    Main main = new Main("src/main/java/com/mycompany/npieunitesmaven/config.xml");
+    /*
+    @Test
+    public void TestsJunit() {
         main.convertJoli((float) 1.3, "distance", "metre", "yard");
-        main.ajouterUnite("distance", "newUnit", "1.07324324;12");
         main.convertJoli((float) 1, "temperature", "fahreneit", "celsius");
         main.convertJoli((float) 1, "temperature", "kelvin", "celsius");
         main.convertJoli((float) 1, "distance", "metre", "kilometre");
@@ -36,6 +35,15 @@ public class TestsJunit {
         main.convertJoli((float) 1, "temperature", "celsius", "kelvin");
         main.convertJoli((float) 1, "temperature", "kelvin", "fahreneit");
         main.convertJoli((float) 1, "temperature", "fahreneit", "kelvin");
+    }
+    
+    @Test
+    public void testAjout(){
+        main.ajouterUnite("distance", "newUnit", "1.07324324;12");
+    }
+    
+    @Test
+    public void testSupression(){
         main.supprimerUnite("distance", "newUnit");
     }
     
@@ -60,4 +68,5 @@ public class TestsJunit {
     //
     // @Test
     // public void hello() {}
+    */
 }

@@ -26,11 +26,11 @@ import org.xml.sax.SAXException;
  * @author jocelynFac
  */
 public class Main {
-    public static LinkedList<Categorie> list = new LinkedList<Categorie>();
-	private String chemin; 
+    public static LinkedList<Categorie> list = new LinkedList<>();
+	private String cheminString; 
 	
 	public Main(String pChemin){
-		chemin = pChemin;
+		cheminString = pChemin;
 		Element racineElement;
 	    
 	    
@@ -142,7 +142,7 @@ public class Main {
 	
 	/*Cette fonction permet d'enregistrer une string dans le fichier */
 	public void saveStrXml(String xml){
-		File fic = new File(chemin);
+		File fic = new File(cheminString);
 		try {
 			Writer w = new FileWriter(fic);
 			w.write(xml);
@@ -219,7 +219,7 @@ public class Main {
 	    
 	    // on parse le fichier de configuration
 	    try {
-	    File file = new File(chemin);
+	    File file = new File(cheminString);
 		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder;
 		docBuilder = docBuilderFactory.newDocumentBuilder();
