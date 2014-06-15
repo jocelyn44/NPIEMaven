@@ -42,118 +42,33 @@ public class MainTest {
      * Test of convertJoli method, of class Main.
      */
     
-    Main instance = new Main("src/main/java/com/mycompany/npieunitesmaven/config.xml");
+    Main main = new Main("src/main/java/com/mycompany/npieunitesmaven/config.xml");
     
     @Test
-    public void testConvertJoli() {
-        System.out.println("convertJoli");
-        float val = (float)13.4;
-        String cate = "distance";
-        String from = "metre";
-        String to = "yard";
-        instance.convertJoli(val, cate, from, to);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+    public void TestsJunit() {
+        main.convertJoli((float) 1.3, "distance", "metre", "yard");
+        main.convertJoli((float) 1, "temperature", "fahreneit", "celsius");
+        main.convertJoli((float) 1, "temperature", "kelvin", "celsius");
+        main.convertJoli((float) 1, "distance", "metre", "kilometre");
+        main.convertJoli((float) 1, "distance", "metre", "newUnit");
+        main.convertJoli((float) 1, "temperature", "fahreneit", "celsius");
+        main.convertJoli((float) 1, "temperature", "celsius", "fahreneit");
+        main.convertJoli((float) 1, "distance", "metre", "inconnue");
+        main.convertJoli((float) 1, "distance", "inconnue", "kilometre");
+        main.convertJoli((float) 1, "distance", "metre", "yard");
+        main.convertJoli((float) 1, "temperature", "celsius", "kelvin");
+        main.convertJoli((float) 1, "temperature", "kelvin", "fahreneit");
+        main.convertJoli((float) 1, "temperature", "fahreneit", "kelvin");
     }
-
-    /**
-     * Test of convert method, of class Main.
-     */
+    
     @Test
-    public void testConvert() {
-        System.out.println("convert");
-        float val = 0.0F;
-        String cate = "";
-        String from = "";
-        String to = "";
-        Main instance = null;
-        float expResult = 0.0F;
-        float result = instance.convert(val, cate, from, to);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAjout(){
+        main.ajouterUnite("distance", "newUnit", "1.07324324;12");
     }
-
-    /**
-     * Test of toXml method, of class Main.
-     */
+    
     @Test
-    public void testToXml() {
-        System.out.println("toXml");
-        Main instance = null;
-        String expResult = "";
-        String result = instance.toXml();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of saveStrXml method, of class Main.
-     */
-    @Test
-    public void testSaveStrXml() {
-        System.out.println("saveStrXml");
-        String xml = "";
-        Main instance = null;
-        instance.saveStrXml(xml);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of ajouterCate method, of class Main.
-     */
-    @Test
-    public void testAjouterCate() {
-        System.out.println("ajouterCate");
-        String nomCate = "";
-        Main instance = null;
-        instance.ajouterCate(nomCate);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of supCate method, of class Main.
-     */
-    @Test
-    public void testSupCate() {
-        System.out.println("supCate");
-        String nomCate = "";
-        Main instance = null;
-        instance.supCate(nomCate);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of ajouterUnite method, of class Main.
-     */
-    @Test
-    public void testAjouterUnite() {
-        System.out.println("ajouterUnite");
-        String categorie = "";
-        String nomUnite = "";
-        String valUnite = "";
-        Main instance = null;
-        instance.ajouterUnite(categorie, nomUnite, valUnite);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of supprimerUnite method, of class Main.
-     */
-    @Test
-    public void testSupprimerUnite() {
-        System.out.println("supprimerUnite");
-        String categorie = "";
-        String nomUnite = "";
-        Main instance = null;
-        instance.supprimerUnite(categorie, nomUnite);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testSupression(){
+        main.supprimerUnite("distance", "newUnit");
     }
     
 }
