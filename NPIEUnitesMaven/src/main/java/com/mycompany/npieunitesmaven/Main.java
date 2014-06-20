@@ -21,18 +21,16 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-/**
- *
- * @author jocelynFac
- */
 public class Main {
-    public static LinkedList<Categorie> list = new LinkedList<>();
-	private String cheminString; 
+	private static LinkedList<Categorie> list = new LinkedList<Categorie>();
+	private String chemin; 
 	
+	//Constructeur de la classe main (initialise les listes de categories / unites en fonction du fichier XML)
 	public Main(String pChemin){
-		cheminString = pChemin;
+		chemin = pChemin;
 		Element racineElement;
-	    
+	    //on initialise la liste
+                list = new LinkedList<Categorie>();
 	    
 	    //on prend le noeud racine
 	    racineElement = getDocument().getDocumentElement();
@@ -48,29 +46,41 @@ public class Main {
 	    	NodeList unitesList = unit.getElementsByTagName("unit");    	
 	    	for(int j=0;j<unitesList.getLength();j++){
 	    		//on ajoute chaque unite dans la categorie
-	    		if(unitesList.item(j).getTextContent().contains(";")){
-	    			float coef, dec;
-	    			String[] tab = unitesList.item(j).getTextContent().split(";");
-	    			coef=Float.parseFloat(tab[0]);
-	    			dec=Float.parseFloat(tab[1]);
-	    			list.get(i).getList().add(new Unite(unitesList.item(j).getAttributes().getNamedItem("nom").getTextContent(), coef, dec));
-	    		}
-	    		else{
-	    			list.get(i).getList().add(new Unite(unitesList.item(j).getAttributes().getNamedItem("nom").getTextContent(), Float.parseFloat(unitesList.item(j).getTextContent())));
-	    		}
+                        double coef, dec;
+                        String[] tab = unitesList.item(j).getTextContent().split(";");
+                        coef=Float.parseFloat(tab[0]);
+                        dec=Float.parseFloat(tab[1]);
+                        list.get(i).addUnit(new Unite(unitesList.item(j).getAttributes().getNamedItem("nom").getTextContent(), coef, dec));
 	    	}
 	    }
 	}
 	
-	public void convertJoli(float val, String cate, String from, String to){
-		float res=convert(val, cate, from, to);
+	public LinkedList<Categorie> getList() {
+		return list;
+	}
+
+	public void setList(LinkedList<Categorie> list) {
+		Main.list = list;
+	}
+
+	public String getChemin() {
+		return chemin;
+	}
+
+	public void setChemin(String chemin) {
+		this.chemin = chemin;
+	}
+
+	//fonction permettant d'afficher lisiblement une conversion
+	public void convertJoli(double val, String cate, String from, String to){
+		double res=convert(val, cate, from, to);
 		if(res!=0)
-			System.out.println(val+" "+from+ " equivaut a : "+res+" "+to);
+			System.out.println(val+" "+from+ " equivaut a : "+Math.round(res)+" "+to);
 	}
 	
 	//fonction permettanvt de convertir une unite vers une autre
-	public float convert(float val, String cate, String from, String to){
-		float valFrom=0, valTo=0, decalFrom=0, decalTo=0;
+	public double convert(double val, String cate, String from, String to){
+		double valFrom=0, valTo=0, decalFrom=0, decalTo=0;
 		/* context Main::convert(cate, from, to) pre
 		 * self->forAll(c:Categorie | c = cate implies(c->forAll(u:Unite | c=from)))
 		 * self->forAll(c:Categorie | c = cate implies(c->forAll(u:Unite | c=to)))
@@ -142,7 +152,7 @@ public class Main {
 	
 	/*Cette fonction permet d'enregistrer une string dans le fichier */
 	public void saveStrXml(String xml){
-		File fic = new File(cheminString);
+		File fic = new File(chemin);
 		try {
 			Writer w = new FileWriter(fic);
 			w.write(xml);
@@ -164,7 +174,7 @@ public class Main {
 	
 	/*Cette fonction permet d'ajouter une categorie*/
 	public void ajouterCate(String nomCate){
-		if(searchCate(nomCate)!=null)
+		if(searchCate(nomCate)==null && nomCate!="" && nomCate!=null)
 			list.add(new Categorie(nomCate));
 	}
 	
@@ -194,21 +204,23 @@ public class Main {
 		if(!cateExiste)
 			System.out.println("La categorie n'existe pas, l'unite ne peut donc pas etre ajoutee");
 		//on ajoute l'unite au fichier XML
-		if(!doublon && cateExiste){
+		if(!doublon && cateExiste && nomUnite!="" && nomUnite!=null && valUnite!="" && valUnite!=null){
 			Unite u;
-			if(valUnite.contains(";")){
-				//si on a un decalage, on separe la String
-				float coef, dec;
-				String[] tab = valUnite.split(";");
-				coef=Float.parseFloat(tab[0]);
-				dec=Float.parseFloat(tab[1]);
-				u = new Unite(nomUnite, coef, dec);
+                        double coef, dec;
+                        String[] tab = valUnite.split(";");
+                        coef=Float.parseFloat(tab[0]);
+                        if(tab.length==2)
+                            dec=Float.parseFloat(tab[1]);
+                        else
+                            dec=0;
+                        u = new Unite(nomUnite, coef, dec);
+			Categorie cate = searchCate(categorie);
+			if(cate!=null){
+				cate.addUnit(u);
+				System.out.println("L'unite "+nomUnite+" a bien ete ajoutee");
 			}
 			else
-				u = new Unite(nomUnite, Float.parseFloat(valUnite));
-			Categorie cate = searchCate(categorie);
-			if(cate!=null)
-				cate.getList().add(u);
+				System.out.println("L'unite "+nomUnite+" n'a pas pu etre ajoutee");
 		saveStrXml(toXml());
 		}
 	}
@@ -219,7 +231,7 @@ public class Main {
 	    
 	    // on parse le fichier de configuration
 	    try {
-	    File file = new File(cheminString);
+	    File file = new File(chemin);
 		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder;
 		docBuilder = docBuilderFactory.newDocumentBuilder();
@@ -253,6 +265,8 @@ public class Main {
 		}
 		if(!supOk)
 			System.out.println("L'unite n'a pas pu etre supprimee.");
+		else
+			System.out.println("L'unite "+nomUnite+" a bien ete supprimee.");
 		saveStrXml(toXml());
 	}
 }
