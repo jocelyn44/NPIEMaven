@@ -25,7 +25,11 @@ public class Main {
 	private static LinkedList<Categorie> list = new LinkedList<Categorie>();
 	private String chemin; 
 	
-	//Constructeur de la classe main (initialise les listes de categories / unites en fonction du fichier XML)
+	
+        /**Constructeur de la classe main (initialise les listes de categories / unites en fonction du fichier XML)
+         * 
+         * @param pChemin   : chemin vers le fichier XML
+         */
 	public Main(String pChemin){
 		chemin = pChemin;
 		Element racineElement;
@@ -55,6 +59,7 @@ public class Main {
 	    }
 	}
 	
+        
 	public LinkedList<Categorie> getList() {
 		return list;
 	}
@@ -71,14 +76,29 @@ public class Main {
 		this.chemin = chemin;
 	}
 
-	//fonction permettant d'afficher lisiblement une conversion
+	
+        /**fonction permettant d'afficher lisiblement une conversion
+         * 
+         * @param val   : valeur a convertir
+         * @param cate  : categorie de la conversion
+         * @param from  : unite de depart
+         * @param to    : unite de destination
+         */
 	public void convertJoli(double val, String cate, String from, String to){
 		double res=convert(val, cate, from, to);
 		if(res!=0)
 			System.out.println(val+" "+from+ " equivaut a : "+Math.round(res)+" "+to);
 	}
 	
-	//fonction permettanvt de convertir une unite vers une autre
+	
+        /**fonction permettanvt de convertir une unite vers une autre
+         * 
+         * @param val   : valeur a convertir
+         * @param cate  : categorie de la conversion
+         * @param from  : unite de depart
+         * @param to    : unite de destination
+         * @return      : valeur apres conversion
+         */
 	public double convert(double val, String cate, String from, String to){
 		double valFrom=0, valTo=0, decalFrom=0, decalTo=0;
 		/* context Main::convert(cate, from, to) pre
@@ -133,7 +153,11 @@ public class Main {
 		return 0;
 	}
 	
-	/*cette fonction permet de retourner une string contenant l'etat de la memoire*/
+	
+        /**cette fonction permet de retourner une string contenant l'etat de la memoire
+         * 
+         * @return  : texte XML representant l'etat de la memoire
+         */
 	public String toXml(){
 		String res="<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><jocafconverter>";
 		for(int i=0;i<list.size();i++){
@@ -150,7 +174,10 @@ public class Main {
 		return res;
 	}
 	
-	/*Cette fonction permet d'enregistrer une string dans le fichier */
+	/**Cette fonction permet d'enregistrer une string dans le fichier
+         * 
+         * @param xml   : texte a enregistrer dans le fichier XML
+         */
 	public void saveStrXml(String xml){
 		File fic = new File(chemin);
 		try {
@@ -164,7 +191,12 @@ public class Main {
 		
 	}
 	
-	/*Cette fonction retourne une unite en fonction de son nom*/
+	/**Cette fonction retourne une unite en fonction de son nom
+         * 
+         * @param cate  : nom de la Categorie
+         * @param unite : nom de l'Unite
+         * @return      : objet Unite
+         */
 	private Unite getUnit(String cate, String unite){
 		Categorie categorie=searchCate(cate);
 		if(categorie!=null)
@@ -172,13 +204,20 @@ public class Main {
 		return null;
 	}
 	
-	/*Cette fonction permet d'ajouter une categorie*/
+	/**Cette fonction permet d'ajouter une categorie
+         * 
+         * @param nomCate   : nom de la Categorie
+         */
 	public void ajouterCate(String nomCate){
 		if(searchCate(nomCate)==null && nomCate!="" && nomCate!=null)
 			list.add(new Categorie(nomCate));
 	}
 	
-	/*Cette fonction permet de savoir si une categorie existe*/
+	/**Cette fonction permet de savoir si une categorie existe
+         * 
+         * @param cate  : nom de la Categorie
+         * @return      : objet Categorie
+         */
 	private Categorie searchCate(String cate){
 		for(int i=0;i<list.size();i++){
 			if(list.get(i).getNom().equals(cate))
@@ -187,7 +226,10 @@ public class Main {
 		return null;
 	}
 	
-	/*Cette fonction permet de supprimer une categorie*/
+	/**Cette fonction permet de supprimer une categorie
+         * 
+         * @param nomCate   : nom de la categorie
+         */
 	public void supCate(String nomCate){
 		for(int i=0;i<list.size();i++){
 			if(list.get(i).getNom().equals(nomCate))
@@ -196,7 +238,12 @@ public class Main {
 			
 	}
 	
-	/*Cette fonction permet d'ajouter une unite dans une categorie*/
+	/**Cette fonction permet d'ajouter une unite dans une categorie
+         * 
+         * @param categorie : nom de la Categorie
+         * @param nomUnite  : nom de l'Unite
+         * @param valUnite  : valeur de l'unite
+         */
 	public void ajouterUnite(String categorie, String nomUnite, String valUnite){
 		boolean cateExiste = searchCate(categorie)!=null;
 		boolean doublon=getUnit(categorie, nomUnite)!=null;
@@ -225,7 +272,10 @@ public class Main {
 		}
 	}
 	
-	/*Cette fonction permet de caster le fichier XML de configuration*/
+	/**Cette fonction permet de caster le fichier XML de configuration
+         * 
+         * @return  : le document XML 
+         */
 	private Document getDocument(){
 		Document documentXML = null;
 	    
@@ -252,7 +302,11 @@ public class Main {
 	    return documentXML;
 	}
 	
-	/*Cette fonction permet de supprimer une unite*/
+	/**Cette fonction permet de supprimer une unite
+         * 
+         * @param categorie : nom de la Categorie
+         * @param nomUnite  : nom de l'Unite
+         */
 	public void supprimerUnite(String categorie, String nomUnite){
 		boolean supOk=false;
 		Categorie cate= searchCate(categorie);
