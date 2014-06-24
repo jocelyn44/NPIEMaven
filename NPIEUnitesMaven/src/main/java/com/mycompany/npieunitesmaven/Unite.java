@@ -13,8 +13,8 @@ public class Unite {
 
 	
 	/**Constructeur de la classse unite
-         * @param pnom : le nom de l'unite
-         * @param pval : le coefficient multiplicateur de l'unite
+         * @param pNom  : le nom de l'unite
+         * @param pVal  : le coefficient multiplicateur de l'unite
          * @param pDecal : le coefficient de decallage de l'unite
          **/
 	public Unite(String pNom, double pVal, double pDecal){
@@ -23,17 +23,14 @@ public class Unite {
 		decal=pDecal;
 	}
 	
-        /**Getter du coefficient de decalage**/
 	public double getDecal() {
 		return decal;
 	}
 	
-        /**Getter du nom de l'unite**/
 	public String getNom() {
 		return nom;
 	}
         
-        /**Getter du coefficient multiplicateur**/
 	public double getVal() {
 		return coef;
 	}
