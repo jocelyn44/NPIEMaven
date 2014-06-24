@@ -30,8 +30,8 @@ public class Categorie {
 	
         /**Retourne l'Unite associee au nom passe en parametre
          * 
-         * @param unit      : le nom d'une unite
-         * @return Unite    : objet Unite
+         * @param unit : le nom d'une unite
+         * @return Unite : objet Unite
          */
 	public Unite getValUnit(String unit){
 		if(unit==null || unit ==""){
@@ -47,7 +47,7 @@ public class Categorie {
 	
         /**Ajoute une Unite a la Categorie
          * 
-         * @param unit  : Unite a ajouter
+         * @param unit : Unite a ajouter
          */
 	public void addUnit(Unite unit){
 		this.list.add(unit);
