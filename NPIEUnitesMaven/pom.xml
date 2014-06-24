@@ -5,10 +5,10 @@
     <artifactId>NPIEUnitesMaven</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>CAFJOTEST</name>
+    <name>UnitConverter</name>
     <url>https://github.com/jocelyn44/NPIEUnitesMaven</url>
     <description>
-        This website allow you to get informations about our project of "Nouvelles pratiques en entreprise"
+        This website allow you to get informations about our project of "Nouvelles pratiques en entreprise". This project is based on our previous project of "Développement Logiciel : Approche Formelle et à Objets", we just added Maven to our project to accomodate it to continuous integration.
     </description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,7 +22,7 @@
             <id>jocelyn44</id>
             <email>jocelyn.merlaud@etu.univ-nantes.fr</email>
             <roles>
-                <role>Maitre du monde</role>
+                <role>Developer</role>
             </roles>
         </developer>
         <developer>
@@ -30,12 +30,12 @@
             <id>MrCaf</id>
             <email>charles.fonvielle@etu.univ-nantes.fr</email>
             <roles>
-                <role>Messi des juifs</role>
+                <role>Developer</role>
             </roles>
         </developer>
     </developers> 
     <organization>
-        <name>JOCAFConverter</name>
+        <name>JOCAFSoftwares</name>
     </organization>
     <scm>
         <connection>scm:git:https://github.com/jocelyn44/NPIEUnitesMaven.git</connection>

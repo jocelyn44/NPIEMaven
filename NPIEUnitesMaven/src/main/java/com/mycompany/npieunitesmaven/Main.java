@@ -133,19 +133,19 @@ public class Main {
 				}
 			}
 			else if(decalFrom>0){
-				return (((val-decalFrom)*valTo)/valFrom);
+				return ((val-decalFrom)*valTo)/valFrom;
 			}
 			else if(decalFrom<0){
-				return ((val*valFrom)+decalFrom/valTo);
+				return (val*valFrom+decalFrom)/valTo;
 			}
 			else if(decalTo>0){
-				return ((val*valTo)/valFrom+decalTo);
+				return val*valTo/valFrom+decalTo;
 			}
 			else if(decalTo<0){
-				return ((val*valTo)/valFrom-decalTo);
+				return (val*valTo)/valFrom-decalTo;
 			}
 			else{
-				return ((val*valFrom)/valTo);
+				return (val*valFrom)/valTo;
 			}
 		}
 		else 

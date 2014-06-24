@@ -7,11 +7,29 @@
     <version>1.3.1</version>
   </skin>
     <body>
-    <menu name="Overview">
+    <menu name="Project overview">
       <item name="Introduction" href="index.html"/>
-      <item name="Classes" href="testapidocs/index.html"/>
-      <item name="Code cover" href="jacoco/index.html"/>
       <item name="Team" href="team-list.html"/>
+      <item name="Project information" href="project-info.html"/>
+      <item name="Project report" href="project-reports.html"/>
+      <item name="Project summary" href="project-summary.html"/>
+    </menu>
+    <menu name="Project dependencies">
+      <item name="Dependencies" href="dependencies.html"/>
+      <item name="Dependency info" href="dependency-info.html"/>
+      <item name="Plugin management" href="plugin-management.html"/>
+      <item name="Plugins" href="plugins.html"/>
+    </menu>
+    <menu name="About the code">
+      <item name="Classes" href="testapidocs/index.html"/>
+      <item name="Changelog" href="changelog.html"/>
+      <item name="Development activity" href="dev-activity.html"/>
+      <item name="File activity" href="file-activity.html"/>
+    </menu>
+    <menu name="Tests and quality">
+      <item name="Code quality - PMD" href="pmd.html"/>
+      <item name="Test, code cover - Jacoco" href="jacoco/index.html"/>
+      <item name="Surefire report" href="surefire-report.html"/>
     </menu>
     <menu name="Links">
       <item name="Sources" href="source-repository.html"/>
