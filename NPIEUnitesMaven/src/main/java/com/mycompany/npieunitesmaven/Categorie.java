@@ -12,6 +12,10 @@ public class Categorie {
 	private String nom;
 	private LinkedList<Unite> list = new LinkedList<Unite>();
 	
+        /**Constructeur de la classe Categorie
+         * 
+         * @param pNom 
+         */
 	public Categorie(String pNom){
 		nom = pNom;
 	}
@@ -24,6 +28,11 @@ public class Categorie {
 		return list;
 	}
 	
+        /**Retourne l'Unite associee au nom passe en parametre
+         * 
+         * @param unit      : le nom d'une unite
+         * @return Unite    : objet Unite
+         */
 	public Unite getValUnit(String unit){
 		if(unit==null || unit ==""){
 			System.out.println("Veuillez passer un paramètre valide.");
@@ -36,6 +45,10 @@ public class Categorie {
 		return null;
 	}
 	
+        /**Ajoute une Unite a la Categorie
+         * 
+         * @param unit  : Unite a ajouter
+         */
 	public void addUnit(Unite unit){
 		this.list.add(unit);
 	}
